@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">ABTOcalc</string>
     <string name="logo">Авто калькулятор</string>
+    <string name="Button1">Найти авто</string>
+    <string name="Button2">Создать авто</string>
+    <string name="Button3">Пример</string>
+    <string name="Button4">О программе</string>
 
 </resources>
