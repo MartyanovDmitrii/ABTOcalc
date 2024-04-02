@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBack"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="20sp"
+        android:text="@string/logo"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/Button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="180sp"
+        android:background="@android:drawable/editbox_background"
+        android:backgroundTint="@color/white"
+        android:fontFamily="sans-serif"
+        android:onClick="startNewActivity"
+        android:text="@string/Button5"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/ButtonBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Button5"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="20sp"
+        android:background="@android:drawable/editbox_background"
+        android:backgroundTint="@color/white"
+        android:fontFamily="sans-serif"
+        android:text="@string/ButtonBack"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/searchcar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_marginHorizontal="50sp"
+        android:layout_marginTop="130sp"
+        android:ems="10"
+        android:hint="@string/SearchCar"
+        android:inputType="textPersonName"
+        android:text="@string/SearchCar"
+        android:textAlignment="textStart" />
+
+
+</RelativeLayout>
