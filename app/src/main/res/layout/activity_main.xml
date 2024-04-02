@@ -12,9 +12,10 @@
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/anton"
-        android:text="@string/logo"
         android:layout_marginTop="50sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="20sp"
+        android:text="@string/logo"
         android:textAlignment="center"
         android:textColor="@color/Textcolor"
         android:textSize="35sp"
@@ -27,7 +28,10 @@
         android:layout_below="@+id/logo"
         android:layout_marginHorizontal="100dp"
         android:layout_marginTop="180sp"
+        android:background="@android:drawable/editbox_background"
         android:backgroundTint="@color/white"
+        android:fontFamily="sans-serif"
+        android:onClick="startNewActivity"
         android:text="@string/Button1"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -39,8 +43,9 @@
         android:layout_below="@+id/Button1"
         android:layout_marginHorizontal="100dp"
         android:layout_marginTop="20sp"
+        android:background="@android:drawable/editbox_background"
         android:backgroundTint="@color/white"
-        android:fontFamily="@font/anton"
+        android:fontFamily="sans-serif"
         android:text="@string/Button2"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -53,8 +58,9 @@
         android:layout_below="@+id/Button2"
         android:layout_marginHorizontal="100dp"
         android:layout_marginTop="20sp"
+        android:background="@android:drawable/editbox_background"
         android:backgroundTint="@color/white"
-        android:fontFamily="@font/anton"
+        android:fontFamily="sans-serif"
         android:text="@string/Button3"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -67,11 +73,19 @@
         android:layout_below="@+id/Button3"
         android:layout_marginHorizontal="100dp"
         android:layout_marginTop="20sp"
+        android:background="@android:drawable/editbox_background"
         android:backgroundTint="@color/white"
+        android:fontFamily="sans-serif"
         android:text="@string/Button4"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </RelativeLayout>
