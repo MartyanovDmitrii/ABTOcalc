@@ -13,7 +13,7 @@ public class CreateActivity extends AppCompatActivity {
 
     private TextView logo;
     private EditText CreateCar, createProbeg, createNorma, createOstatok;
-    private Button ButtonCreate, ButtonBack;
+    private Button ButtonCreate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class CreateActivity extends AppCompatActivity {
         createNorma = findViewById(R.id.createNorma);
         createOstatok = findViewById(R.id.createOstatok);
         ButtonCreate = findViewById(R.id.ButtonCreate);
-        ButtonBack = findViewById(R.id.ButtonBack);
+
         ButtonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

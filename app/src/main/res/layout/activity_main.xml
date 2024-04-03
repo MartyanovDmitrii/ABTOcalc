@@ -69,6 +69,7 @@
         android:background="@android:drawable/editbox_background"
         android:backgroundTint="@color/white"
         android:fontFamily="sans-serif"
+        android:onClick="startCalc"
         android:text="@string/Button3"
         android:textColor="@color/black"
         android:textSize="18sp"

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBack"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/strName1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="20sp"
+        android:text="Введите данные ТС"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/strname_car"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/strName1"
+        android:layout_marginTop="30sp"
+        android:layout_marginRight="280sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="1sp"
+        android:text="Пробег начальный:"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/strprobeg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="270sp"
+        android:layout_below="@+id/strname_car"
+        android:layout_marginTop="0sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="1sp"
+        android:text="Пробег конечный:"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/strPath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="270sp"
+        android:layout_below="@+id/strprobeg"
+        android:layout_marginTop="0sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="1sp"
+        android:text="Пробег пройденный:"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/strnorma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/strPath"
+        android:layout_marginTop="10sp"
+        android:layout_marginRight="250sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="20sp"
+        android:text="Норма расхода:"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/strostatok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/strnorma"
+        android:layout_marginTop="0sp"
+        android:layout_marginRight="240sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="1sp"
+        android:text="Остаток в баке (при выезде):"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/strostatok2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/strostatok"
+        android:layout_marginTop="10sp"
+        android:layout_marginRight="240sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="1sp"
+        android:text="Остаток (л):"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/strtoplivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/strostatok2"
+        android:layout_marginTop="10sp"
+        android:layout_marginRight="240sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="1sp"
+        android:text="Потрачено топлива (л):"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/ButtonCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/strName1"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="480sp"
+        android:background="@android:drawable/editbox_background"
+        android:backgroundTint="@color/white"
+        android:fontFamily="sans-serif"
+        android:text="Расчитать"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/ButtonBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ButtonCreate"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="15sp"
+        android:background="@android:drawable/editbox_background"
+        android:backgroundTint="@color/white"
+        android:fontFamily="sans-serif"
+        android:onClick="goBack"
+        android:text="@string/ButtonBack"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/CreateCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/strName1"
+        android:layout_marginLeft="135sp"
+        android:layout_marginTop="50sp"
+        android:ems="10"
+        android:hint="Ведите пробег (км)"
+        android:inputType="numberDecimal"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/createProbeg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CreateCar"
+        android:layout_marginLeft="135sp"
+        android:layout_marginTop="20sp"
+        android:ems="10"
+        android:hint="Введите пробег (км)"
+        android:inputType="numberDecimal"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/createPath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createProbeg"
+        android:layout_marginLeft="135sp"
+        android:layout_marginTop="20sp"
+        android:ems="10"
+        android:hint="Введите пробег (км)"
+        android:inputType="numberDecimal"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/createNorma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createPath"
+        android:layout_marginLeft="160sp"
+        android:layout_marginTop="0sp"
+        android:ems="10"
+        android:hint="Введите норму (л/100км)"
+        android:inputType="numberDecimal"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/createOstatok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createNorma"
+        android:layout_marginLeft="160sp"
+        android:layout_marginTop="20sp"
+        android:ems="10"
+        android:hint="Введите остаток (л)"
+        android:inputType="numberDecimal"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/createOstatok2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createOstatok"
+        android:layout_marginLeft="160sp"
+        android:layout_marginTop="0sp"
+        android:ems="10"
+        android:hint="Введите остаток (л)"
+        android:inputType="numberDecimal"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/resToplivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@id/createOstatok2"
+        android:layout_marginLeft="160sp"
+        android:layout_marginTop="50sp"
+        android:textColor="@color/Textcolor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+        />
+
+
+</RelativeLayout>
