@@ -8,6 +8,7 @@
     <string name="Button5">Поиск</string>
     <string name="ButtonBack">Назад</string>
     <string name="SearchCar">Поиск по номеру</string>
+    <string name="CreateCar">Ведите название авто</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

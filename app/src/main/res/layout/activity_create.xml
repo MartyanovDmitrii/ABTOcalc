@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBack"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="20sp"
+        android:text="@string/logo"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/strName1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="10sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="20sp"
+        android:text="Введите данные ТС"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/strname_car"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="270sp"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="60sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="20sp"
+        android:text="Название:"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/strprobeg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="270sp"
+        android:layout_below="@+id/strname_car"
+        android:layout_marginTop="30sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="20sp"
+        android:text="Пробег:"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/strnorma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/strprobeg"
+        android:layout_marginTop="30sp"
+        android:layout_marginRight="220sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="20sp"
+        android:text="Норма расхода:"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/strostatok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/strnorma"
+        android:layout_marginTop="30sp"
+        android:layout_marginRight="220sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="20sp"
+        android:text="Остаток в баке:"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/ButtonCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="450sp"
+        android:background="@android:drawable/editbox_background"
+        android:backgroundTint="@color/white"
+        android:fontFamily="sans-serif"
+        android:onClick="startNewActivity"
+        android:text="Создать"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/ButtonBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ButtonCreate"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="15sp"
+        android:background="@android:drawable/editbox_background"
+        android:backgroundTint="@color/white"
+        android:fontFamily="sans-serif"
+        android:onClick="La"
+        android:text="@string/ButtonBack"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/CreateCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_marginLeft="135sp"
+        android:layout_marginTop="60sp"
+        android:ems="10"
+        android:hint="@string/CreateCar"
+        android:inputType="textPersonName"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/createProbeg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/CreateCar"
+        android:layout_marginLeft="135sp"
+        android:layout_marginTop="30sp"
+        android:ems="10"
+        android:hint="Введите пробег (км)"
+        android:inputType="textPersonName"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/createNorma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createProbeg"
+        android:layout_marginLeft="188sp"
+        android:layout_marginTop="30sp"
+        android:ems="10"
+        android:hint="Введите норму (л/100км)"
+        android:inputType="textPersonName"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/createOstatok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createNorma"
+        android:layout_marginLeft="188sp"
+        android:layout_marginTop="30sp"
+        android:ems="10"
+        android:hint="Введите остаток (л)"
+        android:inputType="textPersonName"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

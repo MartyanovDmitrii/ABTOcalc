@@ -46,6 +46,7 @@
         android:background="@android:drawable/editbox_background"
         android:backgroundTint="@color/white"
         android:fontFamily="sans-serif"
+        android:onClick="startCreate"
         android:text="@string/Button2"
         android:textColor="@color/black"
         android:textSize="18sp"
