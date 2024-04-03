@@ -33,13 +33,14 @@
         android:textColor="@color/Textcolor"
         android:textSize="25sp"
         android:textStyle="bold" />
+
     <TextView
         android:id="@+id/strname_car"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="270sp"
         android:layout_below="@+id/logo"
         android:layout_marginTop="60sp"
+        android:layout_marginRight="270sp"
         android:fontFamily="@font/anton"
         android:lineSpacingExtra="20sp"
         android:text="Название:"
@@ -116,7 +117,7 @@
         android:background="@android:drawable/editbox_background"
         android:backgroundTint="@color/white"
         android:fontFamily="sans-serif"
-        android:onClick="La"
+        android:onClick="goBack"
         android:text="@string/ButtonBack"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -143,7 +144,7 @@
         android:layout_marginTop="30sp"
         android:ems="10"
         android:hint="Введите пробег (км)"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textAlignment="textStart"
         android:textStyle="bold" />
 
@@ -156,7 +157,7 @@
         android:layout_marginTop="30sp"
         android:ems="10"
         android:hint="Введите норму (л/100км)"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textAlignment="textStart"
         android:textStyle="bold" />
     <EditText
@@ -168,7 +169,7 @@
         android:layout_marginTop="30sp"
         android:ems="10"
         android:hint="Введите остаток (л)"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textAlignment="textStart"
         android:textStyle="bold" />
 

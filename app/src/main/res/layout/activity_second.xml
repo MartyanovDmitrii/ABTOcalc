@@ -31,7 +31,6 @@
         android:background="@android:drawable/editbox_background"
         android:backgroundTint="@color/white"
         android:fontFamily="sans-serif"
-        android:onClick="startNewActivity"
         android:text="@string/Button5"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -46,8 +45,8 @@
         android:background="@android:drawable/editbox_background"
         android:backgroundTint="@color/white"
         android:fontFamily="sans-serif"
-        android:onClick="La"
         android:text="@string/ButtonBack"
+        android:onClick="goBack"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -58,7 +57,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
         android:layout_marginHorizontal="50sp"
-        android:layout_marginTop="130sp"
+        android:layout_marginTop="120sp"
+        android:textSize="20sp"
         android:ems="10"
         android:hint="@string/SearchCar"
         android:inputType="textPersonName"

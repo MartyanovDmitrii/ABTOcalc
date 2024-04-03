@@ -21,6 +21,13 @@
         android:textSize="35sp"
         android:textStyle="bold" />
 
+    <ImageView
+        android:id="@+id/iconLogo"
+        android:layout_width="match_parent"
+        android:layout_height="133sp"
+        android:layout_marginTop="140sp"
+        tools:srcCompat="@drawable/free_icon_car_3304106" />
+
     <Button
         android:id="@+id/Button1"
         android:layout_width="match_parent"
