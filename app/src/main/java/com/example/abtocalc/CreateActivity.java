@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CreateActivity extends AppCompatActivity {
 
-    private TextView logo;
+
     private EditText CreateCar, createProbeg, createNorma, createOstatok;
     private Button ButtonCreate;
 
@@ -20,7 +20,7 @@ public class CreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
-        logo = findViewById(R.id.logo);
+
         CreateCar = findViewById(R.id.CreateCar);
         createProbeg = findViewById(R.id.createProbeg);
         createNorma = findViewById(R.id.createNorma);
