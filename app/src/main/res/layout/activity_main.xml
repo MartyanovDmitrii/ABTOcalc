@@ -25,7 +25,9 @@
         android:id="@+id/iconLogo"
         android:layout_width="match_parent"
         android:layout_height="133sp"
-        android:layout_marginTop="140sp"
+        android:layout_marginTop="120sp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/free_icon_car_3304106"
         tools:srcCompat="@drawable/free_icon_car_3304106" />
 
     <Button
@@ -82,6 +84,7 @@
         android:layout_below="@+id/Button3"
         android:layout_marginHorizontal="100dp"
         android:layout_marginTop="20sp"
+        android:onClick="Oprog"
         android:background="@android:drawable/editbox_background"
         android:backgroundTint="@color/white"
         android:fontFamily="sans-serif"

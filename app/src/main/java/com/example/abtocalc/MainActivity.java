@@ -38,5 +38,9 @@ public class MainActivity extends AppCompatActivity {
     public void startCalc(View v){
         Intent intent = new Intent(this, CalcBezTS.class);
         startActivity(intent);
+
     }
+    public void Oprog(View v){
+        Intent intent = new Intent(this, SecondFragment.class);
+        startActivity(intent);}
     }

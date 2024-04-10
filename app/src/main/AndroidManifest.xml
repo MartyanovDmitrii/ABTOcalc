@@ -17,6 +17,9 @@
             android:exported="false"
             android:theme="@style/Base.Theme.ABTOcalc" />
         <activity
+            android:name=".SecondFragment"
+            android:exported="false" />
+        <activity
             android:name=".SecondActivity"
             android:exported="false" />
         <activity
