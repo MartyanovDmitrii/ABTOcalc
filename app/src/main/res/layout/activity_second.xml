@@ -20,14 +20,27 @@
         android:textColor="@color/Textcolor"
         android:textSize="35sp"
         android:textStyle="bold" />
+    <TextView
+        android:id="@+id/textViewCarDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="35sp"
+        android:fontFamily="@font/anton"
+        android:lineSpacingExtra="20sp"
+
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <Button
-        android:id="@+id/Button5"
+        android:id="@+id/buttonFindCar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
         android:layout_marginHorizontal="100dp"
-        android:layout_marginTop="180sp"
+        android:layout_marginTop="480sp"
         android:background="@android:drawable/editbox_background"
         android:backgroundTint="@color/white"
         android:fontFamily="sans-serif"
@@ -39,7 +52,7 @@
         android:id="@+id/ButtonBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Button5"
+        android:layout_below="@+id/buttonFindCar"
         android:layout_marginHorizontal="100dp"
         android:layout_marginTop="20sp"
         android:background="@android:drawable/editbox_background"
@@ -52,7 +65,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/searchcar"
+        android:id="@+id/editTextCarName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
@@ -64,5 +77,11 @@
         android:inputType="textPersonName"
         android:textAlignment="textStart" />
 
-
+    <ListView
+        android:id="@+id/listViewFiles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextCarName"
+        android:layout_marginHorizontal="100dp"
+        android:visibility="gone" /> <!-- Скрываем до поиска -->
 </RelativeLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBack">
+
+    <TextView
+        android:id="@+id/textViewFileContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="250sp"
+        android:textColor="@color/black"
+        android:padding="35dp"/>
+    <Button
+        android:id="@+id/ButtonBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="700sp"
+        android:background="@android:drawable/editbox_background"
+        android:backgroundTint="@color/white"
+        android:fontFamily="sans-serif"
+        android:onClick="goBack"
+        android:text="@string/ButtonBack"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
