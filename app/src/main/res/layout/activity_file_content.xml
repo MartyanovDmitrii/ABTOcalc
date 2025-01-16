@@ -6,26 +6,116 @@
     android:background="@color/colorBack">
 
     <TextView
+        android:id="@+id/strName2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:fontFamily="@font/anton"
+        android:text="Расчет"
+        android:textAlignment="center"
+        android:textColor="@color/Textcolor"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/editTextCarName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/strName2"
+        android:hint="Название ТС" />
+
+    <EditText
+        android:id="@+id/editTextProbeg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/editTextCarName"
+        android:hint="Пробег" />
+    <EditText
+        android:id="@+id/editTextPath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/editTextProbeg"
+        android:hint="Пробег проиденный:" />
+    <TextView
+        android:id="@+id/textViewPathEnd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Пробег конечный: "
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/editTextPath"/>
+    <EditText
+        android:id="@+id/editTextZapr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/textViewPathEnd"
+        android:hint="Заправленно топлива:" />
+    <EditText
+        android:id="@+id/editTextNorma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/editTextZapr"
+        android:text="Норма:" />
+
+    <EditText
+        android:id="@+id/editTextOstatok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/editTextNorma"
+        android:hint="Остаток на началe:" />
+
+    <TextView
         android:id="@+id/textViewFileContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:layout_marginTop="250sp"
         android:textColor="@color/black"
-        android:padding="35dp"/>
+        android:layout_marginTop="20dp"
+        android:padding="16dp"
+        android:layout_below="@id/textViewResult"
+        android:visibility="gone"/><!-- Скрыть TextView -->
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Остатко в конце: "
+        android:textSize="16sp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/editTextOstatok"/>
+    <Button
+        android:id="@+id/buttonCalculate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:layout_marginTop="600dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Рассчитать"
+        android:onClick="calculateAndDisplayResult"/>
+
     <Button
         android:id="@+id/ButtonBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="100dp"
-        android:layout_marginTop="700sp"
+        android:layout_marginTop="10dp"
         android:background="@android:drawable/editbox_background"
-        android:backgroundTint="@color/white"
-        android:fontFamily="sans-serif"
-        android:onClick="goBack"
         android:text="@string/ButtonBack"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_below="@id/buttonSaveToFile"
+        android:onClick="goBack" />
+    <Button
+        android:id="@+id/buttonSaveToFile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/buttonCalculate"
+        android:text="Сохранить результаты в файл"
+        android:onClick="saveResultsToFile" />
 
 </RelativeLayout>
