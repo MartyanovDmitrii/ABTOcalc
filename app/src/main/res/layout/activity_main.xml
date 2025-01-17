@@ -92,6 +92,13 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
+    <Button
+        android:id="@+id/openClientButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Открыть клиент"
+        android:layout_marginHorizontal="100dp"
+        android:layout_below="@id/Button4" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
