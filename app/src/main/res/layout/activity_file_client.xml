@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,7 +10,7 @@
         android:id="@+id/ipEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите IP-адрес" />
+        android:hint="Введите IP" />
 
     <EditText
         android:id="@+id/portEditText"
@@ -27,18 +28,19 @@
         android:id="@+id/requestButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Запросить файл" />
+        android:text="Отправить файл" />
+
+    <ListView
+        android:id="@+id/listViewFiles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" /> <!-- Скрыто по умолчанию -->
 
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="16dp"
         android:textSize="16sp"
-        android:paddingTop="16dp" />
-    <Button
-        android:id="@+id/syncButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Синхронизировать файлы" />
-
+        android:textColor="#000000" />
 </LinearLayout>

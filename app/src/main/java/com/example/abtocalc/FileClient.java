@@ -1,30 +1,37 @@
 package com.example.abtocalc;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileClient extends AppCompatActivity {
 
     private EditText ipEditText;
     private EditText portEditText;
-    private EditText fileNameEditText;
+    private EditText fileNameEditText; // Поле для ввода имени файла
     private TextView resultTextView;
-    private Button requestButton;
-    private Button syncButton;
+    private Button requestButton; // Кнопка для отправки файла
+    private ListView listViewFiles; // ListView для отображения найденных файлов
+    private ArrayList<String> fileList; // Список файлов
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,55 +43,76 @@ public class FileClient extends AppCompatActivity {
         fileNameEditText = findViewById(R.id.fileNameEditText);
         resultTextView = findViewById(R.id.resultTextView);
         requestButton = findViewById(R.id.requestButton);
-        syncButton = findViewById(R.id.syncButton); // Добавьте кнопку для синхронизации
+        listViewFiles = findViewById(R.id.listViewFiles); // Инициализация ListView
+        fileList = new ArrayList<>(); // Инициализация списка файлов
+
+        // Установка адаптера для ListView
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, fileList);
+        listViewFiles.setAdapter(adapter);
+
+        // Установка TextWatcher для поиска файлов по имени файла
+        fileNameEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Не требуется
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                searchFiles(s.toString(), adapter);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Не требуется
+            }
+        });
 
         // Установка дефолтных значений
         ipEditText.setText("10.0.2.2"); // Для эмулятора Android
         portEditText.setText("8080"); // Дефолтный порт вашего сервера
 
-        requestButton.setOnClickListener(v -> {
-            String ip = ipEditText.getText().toString();
-            String portString = portEditText.getText().toString();
-            String fileName = fileNameEditText.getText().toString();
+        requestButton.setOnClickListener(v -> sendFile());
 
-            if (ip.isEmpty() || portString.isEmpty() || fileName.isEmpty()) {
-                resultTextView.setText("Введите IP, порт и имя файла");
-                return;
-            }
-
-            int port;
-            try {
-                port = Integer.parseInt(portString);
-            } catch (NumberFormatException e) {
-                resultTextView.setText("Некорректный порт");
-                return;
-            }
-
-            connectToServer(ip, port, fileName);
-        });
-
-        syncButton.setOnClickListener(v -> {
-            String ip = ipEditText.getText().toString();
-            String portString = portEditText.getText().toString();
-
-            if (ip.isEmpty() || portString.isEmpty()) {
-                resultTextView.setText("Введите IP и порт для синхронизации");
-                return;
-            }
-
-            int port;
-            try {
-                port = Integer.parseInt(portString);
-            } catch (NumberFormatException e) {
-                resultTextView.setText("Некорректный порт");
-                return;
-            }
-
-            syncFilesWithServer(ip, port);
+        // Обработчик нажатий на элементы списка
+        listViewFiles.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedFileName = fileList.get(position); // Получаем имя выбранного файла
+            fileNameEditText.setText(selectedFileName); // Устанавливаем имя файла в поле ввода
         });
     }
 
-    private void connectToServer(String ip, int port, String fileName) {
+    private void sendFile() {
+        String ip = ipEditText.getText().toString();
+        String portString = portEditText.getText().toString();
+        String fileName = fileNameEditText.getText().toString();
+
+        if (ip.isEmpty() || portString.isEmpty() || fileName.isEmpty()) {
+            resultTextView.setText("Введите IP, порт и имя файла");
+            return;
+        }
+
+        int port;
+        try {
+            port = Integer.parseInt(portString);
+        } catch (NumberFormatException e) {
+            resultTextView.setText("Некорректный порт");
+            return;
+        }
+
+        // Проверяем существование файла
+        File fileToSend = new File(getFilesDir(), fileName); // Получаем файл из внутреннего хранилища
+        if (!fileToSend.exists()) {
+            resultTextView.setText("Файл не найден: " + fileToSend.getAbsolutePath());
+            return; // Прерываем выполнение, если файл не найден
+        }
+
+        List<File> filesToSend = new ArrayList<>();
+        filesToSend.add(fileToSend); // Добавляем файл для отправки
+        connectToServer(ip, port, filesToSend);
+    }
+
+
+    private void connectToServer(String ip, int port, List<File> filesToSend) {
         new Thread(() -> {
             try {
                 // Подключение к серверу
@@ -94,105 +122,72 @@ public class FileClient extends AppCompatActivity {
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader inStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                // Чтение содержимого файла
-                String filePath = getFilesDir() + "/" + fileName; // Путь к файлу на устройстве
-                StringBuilder fileContent = new StringBuilder();
-
-                try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath))) {
-                    String line;
-                    while ((line = fileReader.readLine()) != null) {
-                        fileContent.append(line).append("\n");
+                // Отправка количества файлов
+                out.println(filesToSend.size());
+                for (File file : filesToSend) {
+                    if (!file.exists()) {
+                        runOnUiThread(() -> resultTextView.append("\nФайл не найден: " + file.getName()));
+                        continue; // Пропускаем файл, если он не найден
                     }
-                } catch (FileNotFoundException e) {
-                    runOnUiThread(() -> resultTextView.setText("Файл не найден: " + filePath));
-                    return;
+
+                    String fileName = file.getName();
+                    StringBuilder fileContent = new StringBuilder();
+                    // Чтение содержимого файла
+                    try (BufferedReader fileReader = new BufferedReader(new FileReader(file))) {
+                        String line;
+                        while ((line = fileReader.readLine()) != null) {
+                            fileContent.append(line).append("\n");
+                        }
+                    } catch (IOException e) {
+                        runOnUiThread(() -> resultTextView.append("\nОшибка чтения файла: " + fileName));
+                        continue; // Пропускаем файл, если произошла ошибка
+                    }
+
+                    // Отправка имени файла
+                    out.println(fileName);
+                    // Отправка содержимого файла
+                    out.println(fileContent.toString());
+                    out.println("END"); // Добавляем маркер окончания
+
+
+                    // Ожидание подтверждения от сервера
+                    String response = inStream.readLine();
+                    if ("OK".equals(response)) {
+                        runOnUiThread(() -> resultTextView.append("\nФайл " + fileName + " успешно отправлен и получен сервером."));
+                    } else {
+                        runOnUiThread(() -> resultTextView.append("\nОшибка при получении файла " + fileName + " на сервере."));
+                    }
                 }
 
-                // Проверка содержимого файла
-                if (fileContent.length() == 0) {
-                    runOnUiThread(() -> resultTextView.setText("Файл пуст: " + filePath));
-                    return;
-                }
-
-                // Отправка команды и файла на сервер
-                out.println("UPLOAD"); // Команда для сервера
-                out.println(fileName); // Имя файла
-                out.println(fileContent.toString()); // Содержимое файла
-
-                // Чтение ответа от сервера
-                String response = inStream.readLine();
-                runOnUiThread(() -> resultTextView.setText(response));
-
-                // Закрытие сокета
-                inStream.close();
-                out.close();
+                // Закрытие соединения
                 socket.close();
+                runOnUiThread(() -> resultTextView.append("\nВсе файлы отправлены!"));
+
             } catch (IOException e) {
-                e.printStackTrace();
-                runOnUiThread(() -> resultTextView.setText("Ошибка: " + e.getMessage()));
+                runOnUiThread(() -> resultTextView.setText("Ошибка при подключении: " + e.getMessage()));
             }
         }).start();
     }
 
-    private void syncFilesWithServer(String ip, int port) {
-        new Thread(() -> {
-            File filesDir = getFilesDir();
-            File[] files = filesDir.listFiles(); // Получаем список файлов в директории
 
-            if (files != null && files.length > 0) {
-                try {
-                    Socket socket = new Socket(ip, port);
-                    PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                    BufferedReader inStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+// Метод для поиска файлов
 
-                    for (File file : files) {
-                        if (file.isFile() && file.getName().endsWith(".txt")) { // Проверка на текстовые файлы
-                            // Отладочное сообщение перед отправкой файла
-                            System.out.println("Отправка файла: " + file.getName());
+    private void searchFiles(String query, ArrayAdapter<String> adapter) {
+        File dir = getFilesDir(); // Получаем директорию
+        File[] files = dir.listFiles(); // Получаем список файлов
+        fileList.clear(); // Очищаем список перед новым поиском
 
-                            StringBuilder fileContent = new StringBuilder();
-                            try (BufferedReader fileReader = new BufferedReader(new FileReader(file))) {
-                                String line;
-                                while ((line = fileReader.readLine()) != null) {
-                                    fileContent.append(line).append("\n");
-                                }
-                            }
-
-                            // Проверка содержимого файла
-                            if (fileContent.length() == 0) {
-                                System.out.println("Файл пуст: " + file.getName()); // Отладочное сообщение
-                                continue; // Пропустить пустой файл
-                            }
-
-                            // Отладочное сообщение о содержимом файла
-                            System.out.println("Содержимое файла: " + fileContent.toString());
-
-                            // Отправка команды и файла на сервер
-                            out.println("UPLOAD"); // Команда для сервера
-                            out.println(file.getName()); // Имя файла
-                            out.println(fileContent.toString()); // Содержимое файла
-
-                            // Чтение ответа от сервера
-                            String response = inStream.readLine();
-                            runOnUiThread(() -> resultTextView.append(response + "\n"));
-                        } else {
-                            System.out.println("Пропущен файл: " + file.getName()); // Отладочное сообщение
-                        }
-                    }
-
-                    // Закрытие сокета
-                    inStream.close();
-                    out.close();
-                    socket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    runOnUiThread(() -> resultTextView.setText("Ошибка: " + e.getMessage()));
+        if (files != null) {
+            for (File file : files) {
+                if (file.getName().toLowerCase().contains(query.toLowerCase())) {
+                    fileList.add(file.getName()); // Добавляем соответствующие файлы в список
                 }
-            } else {
-                runOnUiThread(() -> resultTextView.setText("Нет файлов для синхронизации"));
             }
-        }).start();
+        }
+
+        // Обновляем адаптер и показываем ListView, если есть результаты
+        adapter.notifyDataSetChanged();
+        listViewFiles.setVisibility(fileList.isEmpty() ? View.GONE : View.VISIBLE);
     }
 }
-
 
