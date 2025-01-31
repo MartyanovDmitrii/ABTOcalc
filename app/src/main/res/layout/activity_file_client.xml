@@ -43,4 +43,10 @@
         android:paddingTop="16dp"
         android:textSize="16sp"
         android:textColor="#000000" />
+    <Button
+        android:id="@+id/sendAllFilesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250sp"
+        android:text="Отправить все файлы на сервер" />
 </LinearLayout>
